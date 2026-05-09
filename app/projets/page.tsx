@@ -24,15 +24,16 @@ const projets = [
     reversed: false,
   },
   {
-    title: "Validation d'un système informatisé GMP",
+    title: "Création d'une unité de production aseptique",
     contexte:
-      "Déploiement d'un nouvel ERP/EDMS dans un environnement de production pharmaceutique réglementé, nécessitant une validation rigoureuse.",
+      "Industriel pharmaceutique en cours d'extension de ses capacités de production, avec la mise en place d'une nouvelle unité de fabrication en environnement aseptique.",
     mission:
-      "Pilotage complet de la validation : rédaction des URS/FRS, analyse de risques PFMEA avec les utilisateurs finaux, protocoles QI/QO/QP, exécution des tests et rapport de validation final.",
-    resultat: "Système mis en production conforme 21 CFR Part 11 et Annexe 11.",
-    tags: ["GAMP 5", "21 CFR Part 11", "Annexe 11", "URS/FRS"],
+      "Pilotage de la qualification complète de l'unité : autoclaves, thermoscelleuses et ligne de remplissage automatique. Rédaction et exécution des protocoles QI/QO/QP, coordination avec les fournisseurs pour les FAT/SAT, et constitution des dossiers de qualification réglementaires.",
+    resultat:
+      "Unité de production aseptique qualifiée et opérationnelle, équipements conformes aux exigences GMP.",
+    tags: ["QI/QO/QP", "FAT/SAT", "Aseptique", "Salle blanche", "GMP"],
     company: "EFOR CVO",
-    imageLabel: "validation SI",
+    imageLabel: "unité aseptique",
     reversed: true,
   },
   {

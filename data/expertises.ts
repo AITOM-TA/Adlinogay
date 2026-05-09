@@ -49,7 +49,6 @@ export const tools: string[] = [
   "ERP",
   "Outils de signature électronique",
   "CRM",
-  "Univadis",
 ];
 
 export const softSkills: SoftSkill[] = [

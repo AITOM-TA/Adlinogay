@@ -16,8 +16,7 @@ export default function PersonalTeaser() {
             className="font-cormorant italic text-ink mb-10 leading-relaxed"
             style={{ fontSize: "clamp(24px, 3vw, 34px)" }}
           >
-            «&thinsp;La rigueur scientifique se nourrit aussi de littérature,
-            de plongée sous-marine et de routes nouvelles.&thinsp;»
+            «&thinsp;La rigueur n&apos;a jamais empêché la curiosité — elle la rend plus juste.&thinsp;»
           </blockquote>
           <Button variant="primary" href="/personnel">
             Découvrir mes passions

@@ -3,7 +3,7 @@ import FadeInWhenVisible from "@/components/shared/FadeInWhenVisible";
 const stats = [
   { value: "6+", label: "années d'expérience" },
   { value: "2", label: "diplômes" },
-  { value: "5+", label: "continents visités" },
+  { value: "7+", label: "environnements différents" },
 ];
 
 export default function QuickStats() {

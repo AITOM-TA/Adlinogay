@@ -17,7 +17,7 @@ export const formations: Formation[] = [
   },
   {
     year: "2013–2019",
-    title: "Doctorat en Pharmacie, filière Industrie",
+    title: "Pharmacienne industrielle, filière Industrie",
     institution: "Université d'Aix-Marseille",
   },
 ];

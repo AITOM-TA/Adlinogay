@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import QuickStats from "@/components/home/QuickStats";
+import DoctoratSection from "@/components/home/DoctoratSection";
 import ExpertiseTeaser from "@/components/home/ExpertiseTeaser";
 import MiniTimeline from "@/components/home/MiniTimeline";
 import PersonalTeaser from "@/components/home/PersonalTeaser";
@@ -16,6 +17,7 @@ export default function Home() {
     <>
       <Hero />
       <QuickStats />
+      <DoctoratSection />
       <ExpertiseTeaser />
       <MiniTimeline />
       <PersonalTeaser />

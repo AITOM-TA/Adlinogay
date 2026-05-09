@@ -10,6 +10,19 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    period: "Janvier 2026 — Avril 2026",
+    title: "Ingénieure Validation",
+    company: "EUROS",
+    location: "France",
+    bullets: [
+      "Élaboration et mise à jour du Plan Directeur de Validation — pilotage des validations de procédés conformément aux plannings et référentiels (ISO 13485, GAMP 5)",
+      "Définition des stratégies de validation et rédaction de la documentation technique associée : protocoles QI/QO/QP, management des risques (AMDEC)",
+      "Traitement des non-conformités, CAPA, écarts d'audits internes et externes, GAP Analysis et dossiers de Change Control en lien avec les procédés validés",
+      "Contribution à l'amélioration continue et participation aux processus de conception/industrialisation de nouveaux produits",
+    ],
+    tags: ["ISO 13485", "GAMP 5", "Plan Directeur de Validation", "AMDEC", "CAPA"],
+  },
+  {
     period: "Mars 2023 — Septembre 2025",
     title: "Coordinatrice Validation & Qualification",
     company: "Provepharm",
@@ -71,7 +84,7 @@ export const experiences: Experience[] = [
     bullets: [
       "Dosage de médicaments et suivi thérapeutique pharmacologique des patients",
       "Participation aux réunions de concertation pluridisciplinaire (RCP)",
-      "Réalisation d'une étude observationnelle sur un anti-VIH",
+      "Réalisation d'une étude observationnelle sur un anti-rétroviral",
     ],
     tags: ["Hospitalier", "Étude observationnelle", "RCP"],
   },

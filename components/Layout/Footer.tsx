@@ -54,7 +54,9 @@ export default function Footer() {
             06 68 95 28 04
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/adeline-auguet-8344b8139/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 text-ink-soft text-sm hover:text-brick transition-colors link-animated font-inter"
             aria-label="LinkedIn d'Adeline Auguet"
           >
