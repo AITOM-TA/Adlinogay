@@ -72,7 +72,7 @@ export default function ContactPage() {
       <PageHero
         title="Échangeons"
         label="Contact"
-        subtitle="Ouverte aux opportunités en pharmacie industrielle, validation et conformité réglementaire."
+        subtitle="Ouverte aux opportunités en industrie pharmaceutique, validation et conformité réglementaire."
       />
 
       <section className="py-16 px-6 md:px-12 lg:px-24">
@@ -128,7 +128,7 @@ export default function ContactPage() {
               style={{ border: "1px solid rgba(212,168,140,0.3)" }}
             >
               <p className="font-cormorant italic text-ink-soft text-lg leading-relaxed">
-                «&thinsp;Ouverte aux opportunités en pharmacie industrielle,
+                «&thinsp;Ouverte aux opportunités en industrie pharmaceutique,
                 validation et conformité réglementaire — en CDI ou en
                 mission.&thinsp;»
               </p>
