@@ -7,15 +7,18 @@ import { Send } from "lucide-react";
 interface FormState {
   nom: string;
   email: string;
-  sujet: string;
+  objet: string;
   message: string;
 }
 
-const initialState: FormState = { nom: "", email: "", sujet: "", message: "" };
+const WEBHOOK_URL =
+  "https://n8n-u41084.vm.elestio.app/webhook/398745ca-e909-4cd7-a0d5-8afd949979b7";
+
+const initialState: FormState = { nom: "", email: "", objet: "", message: "" };
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -23,29 +26,34 @@ export default function ContactForm() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: brancher Resend ou Formspree pour l'envoi réel
-    const mailto = `mailto:adelineauguet@orange.fr?subject=${encodeURIComponent(
-      form.sujet || "Message depuis le site"
-    )}&body=${encodeURIComponent(
-      `Nom : ${form.nom}\nEmail : ${form.email}\n\n${form.message}`
-    )}`;
-    window.location.href = mailto;
-    setSubmitted(true);
+    setStatus("loading");
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setStatus("success");
+      setForm(initialState);
+    } catch {
+      setStatus("error");
+    }
   };
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div className="py-12 text-center">
         <p className="font-cormorant text-2xl text-ink mb-3">
-          Message transmis.
+          Message envoyé.
         </p>
         <p className="font-inter text-sm text-ink-soft">
-          Votre client mail devrait s'ouvrir automatiquement.
+          Merci, je reviendrai vers vous rapidement.
         </p>
         <button
-          onClick={() => setSubmitted(false)}
+          onClick={() => setStatus("idle")}
           className="mt-6 font-inter text-sm text-brick underline"
         >
           Envoyer un autre message
@@ -59,7 +67,7 @@ export default function ContactForm() {
       {[
         { name: "nom", label: "Nom", type: "text", required: true },
         { name: "email", label: "Email", type: "email", required: true },
-        { name: "sujet", label: "Sujet", type: "text", required: false },
+        { name: "objet", label: "Objet", type: "text", required: false },
       ].map((field) => (
         <div key={field.name} className="group">
           <label
@@ -123,9 +131,15 @@ export default function ContactForm() {
         />
       </div>
 
-      <Button type="submit" variant="primary" className="gap-2">
+      {status === "error" && (
+        <p className="font-inter text-sm text-brick">
+          Une erreur est survenue. Veuillez réessayer.
+        </p>
+      )}
+
+      <Button type="submit" variant="primary" className="gap-2" disabled={status === "loading"}>
         <Send size={14} />
-        Envoyer
+        {status === "loading" ? "Envoi…" : "Envoyer"}
       </Button>
     </form>
   );

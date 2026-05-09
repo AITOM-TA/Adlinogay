@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/shared/PageHero";
 import FadeInWhenVisible from "@/components/shared/FadeInWhenVisible";
-import PhotoPlaceholder from "@/components/ui/PhotoPlaceholder";
+import Image from "next/image";
 import Tag from "@/components/ui/Tag";
 
 export const metadata: Metadata = {
@@ -20,7 +20,8 @@ const projets = [
     resultat: "Inspection conduite avec succès.",
     tags: ["FDA", "Audit interne", "GMP", "Système qualité"],
     company: "Provepharm",
-    imageLabel: "inspection FDA",
+    image: "/photos/projet-fda.jpg",
+    imageAlt: "Bureau de travail — préparation inspection FDA",
     reversed: false,
   },
   {
@@ -33,20 +34,37 @@ const projets = [
       "Unité de production aseptique qualifiée et opérationnelle, équipements conformes aux exigences GMP.",
     tags: ["QI/QO/QP", "FAT/SAT", "Aseptique", "Salle blanche", "GMP"],
     company: "EFOR CVO",
-    imageLabel: "unité aseptique",
+    image: "/photos/projet-aseptique.jpg",
+    imageAlt: "Ligne de remplissage automatique en environnement aseptique",
     reversed: true,
   },
   {
-    title: "Qualification d'équipements en salle blanche",
+    title: "Qualification en environnement aseptique — Virbac",
     contexte:
-      "Production pharmaceutique en environnement contrôlé nécessitant la qualification complète de nouveaux équipements.",
+      "Laboratoire vétérinaire produisant des dispositifs implantables stériles à destination des animaux, nécessitant la mise en conformité de ses équipements et procédés en environnement aseptique.",
     mission:
-      "Élaboration de la stratégie de qualification, réalisation des FAT chez le fournisseur et SAT sur site, rédaction et exécution des protocoles QI/QO/QP.",
-    resultat: "Équipements qualifiés, état validé documenté et maintenu.",
-    tags: ["QI/QO/QP", "FAT/SAT", "Salle blanche", "GMP"],
+      "Coordination et validation des holding times propre et sale des instruments utilisés dans la réalisation des préparations — définition des durées maximales admissibles et constitution des dossiers de preuve. Qualification d'une autoclave dédiée à la stérilisation des produits implantables stériles : rédaction et exécution des protocoles QI/QO/QP, tests de pénétration de vapeur et cycles de stérilisation validés.",
+    resultat:
+      "Holding times validés et autoclave qualifiée — environnement aseptique conforme aux exigences GMP pour la production de stériles implantables.",
+    tags: ["Autoclave", "Holding time", "QI/QO/QP", "Aseptique", "Stérile", "GMP"],
     company: "Virbac",
-    imageLabel: "salle blanche",
+    image: "/photos/projet-virbac.jpg",
+    imageAlt: "Locaux Virbac — environnement aseptique",
     reversed: false,
+  },
+  {
+    title: "Mise en place d'un four de stérilisation Dry Heat",
+    contexte:
+      "Fabricant d'implants en silicone souhaitant intégrer un procédé de stérilisation par chaleur sèche pour sécuriser sa chaîne de production.",
+    mission:
+      "Pilotage du projet de bout en bout : rédaction du cahier des charges avec le client, sélection et coordination fournisseur, exécution des FAT sur site fabricant puis des SAT à l'installation. Qualification complète de l'équipement — installation (QI), opérationnelle (QO) et de performance (QP) — et constitution des dossiers réglementaires associés.",
+    resultat:
+      "Four Dry Heat qualifié et opérationnel, procédé de stérilisation validé pour les implants en silicone.",
+    tags: ["Dry Heat", "QI/QO/QP", "FAT/SAT", "Stérilisation", "GMP"],
+    company: "EFOR CVO",
+    image: "/photos/projet-dryheat.jpg",
+    imageAlt: "Four de stérilisation par chaleur sèche Dry Heat",
+    reversed: true,
   },
 ];
 
@@ -131,11 +149,15 @@ export default function ProjetsPage() {
                 </div>
 
                 {/* Visuel */}
-                <PhotoPlaceholder
-                  label={projet.imageLabel}
-                  aspectRatio="4/5"
-                  className="w-full max-w-sm mx-auto"
-                />
+                <div className="relative aspect-[4/5] w-full max-w-sm mx-auto rounded-xl overflow-hidden">
+                  <Image
+                    src={projet.image}
+                    alt={projet.imageAlt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 384px"
+                  />
+                </div>
               </div>
 
               {i < projets.length - 1 && (

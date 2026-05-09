@@ -9,6 +9,7 @@ interface ButtonProps {
   children: React.ReactNode;
   className?: string;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export default function Button({
@@ -18,6 +19,7 @@ export default function Button({
   children,
   className = "",
   type = "button",
+  disabled = false,
 }: ButtonProps) {
   const base =
     "inline-flex items-center gap-2 px-6 py-3 rounded-full font-inter text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-terracotta-deep";
@@ -40,7 +42,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={combined}>
+    <button type={type} onClick={onClick} disabled={disabled} className={`${combined} disabled:opacity-50 disabled:cursor-not-allowed`}>
       {children}
     </button>
   );
