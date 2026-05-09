@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Site d'Adeline Auguet — Pharmacienne Industrielle
 
-## Getting Started
+Site portfolio multi-pages, conçu comme un CV étendu et narratif.
 
-First, run the development server:
+## Stack technique
+
+- **Next.js 14** (App Router)
+- **TypeScript**
+- **Tailwind CSS** avec palette personnalisée
+- **Framer Motion** pour les animations au scroll
+- **Lucide React** pour les icônes
+
+## Lancer en développement
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site sera disponible sur [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build de production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Déployer sur Vercel
 
-To learn more about Next.js, take a look at the following resources:
+1. Pousser le dépôt sur GitHub
+2. Importer le projet sur [vercel.com](https://vercel.com)
+3. Vercel détecte automatiquement Next.js — cliquer "Deploy"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Aucune variable d'environnement requise pour le moment.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Structure du projet
 
-## Deploy on Vercel
+```
+app/
+├── page.tsx           → Accueil
+├── parcours/          → Timeline des expériences
+├── expertises/        → Domaines de compétence
+├── projets/           → Études de cas
+├── personnel/         → Centres d'intérêt
+└── contact/           → Formulaire + coordonnées
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+components/
+├── Layout/            → Header (sticky + menu mobile) + Footer
+├── ui/                → Button, Tag, PhotoPlaceholder, SectionLabel
+├── home/              → Hero, QuickStats, ExpertiseTeaser, MiniTimeline, PersonalTeaser
+├── parcours/          → TimelineItem
+├── expertises/        → ExpertiseCard
+├── contact/           → ContactForm
+└── shared/            → FadeInWhenVisible, PageHero
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+data/
+├── experiences.ts     → Expériences professionnelles
+├── formations.ts      → Formations académiques
+├── expertises.ts      → Domaines d'expertise + soft skills + outils
+└── interests.ts       → Centres d'intérêt + destinations de voyage
+```
+
+## Personnalisation
+
+### Ajouter une vraie photo portrait
+
+Remplacer le composant `<PhotoPlaceholder label="portrait" />` par :
+
+```tsx
+import Image from "next/image";
+
+<Image
+  src="/photos/portrait.jpg"
+  alt="Adeline Auguet"
+  fill
+  className="object-cover rounded-xl"
+/>
+```
+
+Placer les photos dans le dossier `public/photos/`.
+
+### Ajouter le lien LinkedIn
+
+Dans `components/Layout/Footer.tsx` et `app/contact/page.tsx`, remplacer `href="#"` par l'URL du profil LinkedIn.
+
+### Activer l'envoi du formulaire
+
+Dans `components/contact/ContactForm.tsx`, remplacer la logique `mailto:` par une intégration [Resend](https://resend.com) ou [Formspree](https://formspree.io).
+
+## Charte graphique
+
+Palette complète dans `tailwind.config.ts`. Typographies : Cormorant Garamond (titres) + Inter (texte) via Google Fonts.
